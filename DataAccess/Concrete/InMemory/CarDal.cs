@@ -34,9 +34,24 @@ namespace DataAccess.Concrete.InMemory
             return _cars;
         }
 
+        public List<Car> GetByBrandId(int brandId)
+        {
+            return _cars.Where(c => c.BrandId == brandId).ToList();
+        }
+
         public List<Car> GetById(int id)
         {
             return _cars.Where(c => c.Id == id).ToList();
+        }
+
+        public List<Car> GetByPrice(decimal dailyPrice1, decimal dailyPrice2)
+        {
+            return _cars.Where(c => dailyPrice1 < c.DailyPrice && c.DailyPrice < dailyPrice2).ToList();
+        }
+
+        public List<Car> GetByYear(int modelYear1, int modelYear2)
+        {
+            return _cars.Where(c => modelYear1 < c.ModelYear && c.ModelYear < modelYear2).ToList();
         }
 
         public void Update(Car car)
