@@ -1,5 +1,5 @@
 ﻿using Business.Abstract;
-using DataAccess.Concrete.InMemory;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,36 +9,68 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
-        CarDal _carDal;
-
-        public CarManager(CarDal carDal)
+        ICarDal _carDal;
+        public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
         }
 
-        public List<Car> GetAllCars()
+        public void Add(Car car)
         {
-            return _carDal.GetAllCars();
+            if (CheckCarNameLength(car))
+            {
+                if (CheckCarDailyPrice(car))
+                {
+                    _carDal.Add(car);
+                }
+                else
+                {
+                    Console.WriteLine("Araba eklenemedi! Arabanın günlük fiyatı 0 TL den büyük olmalıdır.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Araba eklenemedi! Araba ismi en az 2 karakterden oluşmalıdır.");
+            }
         }
 
-        public List<Car> GetByBrandId(int brandId)
+        public bool CheckCarDailyPrice(Car car)
         {
-            return _carDal.GetByBrandId(brandId);
+            if (car.DailyPrice > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public List<Car> GetById(int id)
+        public bool CheckCarNameLength(Car car)
         {
-            return _carDal.GetById(id);
+            if (car.Description.Length >= 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public List<Car> GetByYear(int modelYear1 = 0 , int modelYear2 = 99999)
+        public List<Car> GetCars()
         {
-            return _carDal.GetByYear(modelYear1,modelYear2);
+            return _carDal.GetAll();
         }
 
-        public List<Car> GetByPrice(decimal dailyPrice1 = 0, decimal dailyPrice2 = 99999999999999)
+        public List<Car> GetCarsByBrandId(int id)
         {
-            return _carDal.GetByPrice(dailyPrice1, dailyPrice2);
+            return _carDal.GetAll(car => car.BrandId == id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carDal.GetAll(car => car.ColorId == id);
         }
     }
 }
