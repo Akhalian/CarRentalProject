@@ -3,6 +3,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -71,6 +72,15 @@ namespace Business.Concrete
         public List<Car> GetCarsByColorId(int id)
         {
             return _carDal.GetAll(car => car.ColorId == id);
+        }
+
+        public List<Car> GetCarsDailyPrice(decimal min, decimal max)
+        {
+            return _carDal.GetAll(car => car.DailyPrice >= min && car.DailyPrice <= max);
+        }
+        public void Delete(Car car)
+        {
+            _carDal.Delete(car);
         }
     }
 }
