@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +64,11 @@ namespace DataAccess.Concrete.InMemory
         public List<Car> GetByYear(int modelYear1, int modelYear2)
         {
             return _car.Where(c => modelYear1 < c.ModelYear && c.ModelYear < modelYear2).ToList();
+        }
+
+        public List<RentDetailsDto> getRentDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Car car)
