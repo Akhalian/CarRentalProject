@@ -20,6 +20,7 @@ namespace Core.Utilities.Results.Concrete
         {
 
         }
+
         public SuccessDataResult() : base(default, true)
         {
 

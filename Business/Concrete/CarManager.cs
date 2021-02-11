@@ -73,7 +73,7 @@ namespace Business.Concrete
 
         public IDataResult<List<RentDetailsDto>> GetRentDetailsDto()
         {
-            return new SuccessDataResult<List<RentDetailsDto>>(_carDal.getRentDetails(), Messages.CarsRentDetailsDto);
+            return new SuccessDataResult<List<RentDetailsDto>>(_carDal.getRentDetails(),Messages.CarsRentDetailsDto);
         }
     }
 }
