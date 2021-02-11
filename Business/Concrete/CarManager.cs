@@ -40,24 +40,24 @@ namespace Business.Concrete
             }
         }
 
-        public List<Car> GetCars()
+        public IDataResult<List<Car>> GetCars()
         {
-            return _carDal.GetAll();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
-        public List<Car> GetCarsByBrandId(int id)
+        public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
-            return _carDal.GetAll(car => car.BrandId == id);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.BrandId == id),Messages.CarsListedByBrandId);
         }
 
-        public List<Car> GetCarsByColorId(int id)
+        public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
-            return _carDal.GetAll(car => car.ColorId == id);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.ColorId == id),Messages.CarsListedByColorId);
         }
 
-        public List<Car> GetCarsDailyPrice(decimal min, decimal max)
+        public IDataResult<List<Car>> GetCarsByDailyPrice(decimal min, decimal max)
         {
-            return _carDal.GetAll(car => car.DailyPrice >= min && car.DailyPrice <= max);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.DailyPrice >= min && car.DailyPrice <= max), Messages.CarsListedByDailyPrice);
         }
         public IResult Delete(Car car)
         {
@@ -71,9 +71,9 @@ namespace Business.Concrete
             return new ErrorResult(Messages.CarUpdated);
         }
 
-        public List<RentDetailsDto> GetRentDetailsDto()
+        public IDataResult<List<RentDetailsDto>> GetRentDetailsDto()
         {
-            return _carDal.getRentDetails();
+            return new SuccessDataResult<List<RentDetailsDto>>(_carDal.getRentDetails(), Messages.CarsRentDetailsDto);
         }
     }
 }

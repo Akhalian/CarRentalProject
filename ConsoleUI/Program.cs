@@ -33,7 +33,7 @@ namespace ConsoleUI
             //CarTest(carManager);
             //BrandTest(brandManager);
             //ColorTest(colorManager);
-            //RentDetailTest(carManager);
+            RentDetailTest(carManager);
 
 
 
@@ -41,7 +41,7 @@ namespace ConsoleUI
 
         private static void RentDetailTest(CarManager carManager)
         {
-            foreach (var rentDetailsDto in carManager.GetRentDetailsDto())
+            foreach (var rentDetailsDto in carManager.GetRentDetailsDto().Data)
             {
                 Console.WriteLine(
                     $"Araç adı: {rentDetailsDto.BrandName} {rentDetailsDto.CarName} Araç rengi: {rentDetailsDto.ColorName} Günlük Fiyatı: {rentDetailsDto.DailyPrice}");
@@ -50,7 +50,7 @@ namespace ConsoleUI
 
         private static void ColorTest(ColorManager colorManager)
         {
-            foreach (var color in colorManager.GetColors())
+            foreach (var color in colorManager.GetColors().Data)
             {
                 Console.WriteLine(color.ColorName);
             }
@@ -58,7 +58,7 @@ namespace ConsoleUI
 
         private static void BrandTest(BrandManager brandManager)
         {
-            foreach (var brand in brandManager.GetBrands())
+            foreach (var brand in brandManager.GetBrands().Data)
             {
                 Console.WriteLine(brand.BrandName);
             }
@@ -66,7 +66,7 @@ namespace ConsoleUI
 
         private static void CarTest(CarManager carManager)
         {
-            foreach (var car in carManager.GetCars())
+            foreach (var car in carManager.GetCars().Data)
             {
                 Console.WriteLine(car.Description);
             }

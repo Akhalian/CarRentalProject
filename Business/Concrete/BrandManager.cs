@@ -31,9 +31,9 @@ namespace Business.Concrete
             return new SuccesResult(Messages.BrandDeleted);
         }
 
-        public List<Brand> GetBrands()
+        public IDataResult<List<Brand>> GetBrands()
         {
-            return _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandsListed);
         }
 
         public IResult Update(Brand brand)
