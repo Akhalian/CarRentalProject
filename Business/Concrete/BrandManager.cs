@@ -4,6 +4,9 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Business.Constants;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 
 namespace Business.Concrete
 {
@@ -16,14 +19,16 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
+            return new SuccesResult(Messages.BrandAdded);
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            return new SuccesResult(Messages.BrandDeleted);
         }
 
         public List<Brand> GetBrands()
@@ -31,9 +36,10 @@ namespace Business.Concrete
             return _brandDal.GetAll();
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
+            return new SuccesResult(Messages.BrandUpdated);
         }
     }
 }

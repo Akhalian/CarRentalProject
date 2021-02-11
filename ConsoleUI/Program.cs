@@ -13,7 +13,7 @@ namespace ConsoleUI
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            //carManager.Update(new Car() { CarId = 1, BrandId = 1, ColorId = 1, DailyPrice = 300, Description = "Focus", ModelYear = 2014 });
+            //carManager.Add(new Car() { CarId = 6, BrandId = 2, ColorId = 4, DailyPrice = 400, Description = "Passat", ModelYear = 2016 });
             //carManager.Update(new Car() { CarId = 2, BrandId = 2, ColorId = 2, DailyPrice = 350, Description = "Golf", ModelYear = 2016 });
             //carManager.Update(new Car() { CarId = 3, BrandId = 3, ColorId = 3, DailyPrice = 200, Description = "Linea", ModelYear = 2019 });
             //carManager.Update(new Car() { CarId = 4, BrandId = 4, ColorId = 4, DailyPrice = 250, Description = "Magane", ModelYear = 2017 });
@@ -33,13 +33,19 @@ namespace ConsoleUI
             //CarTest(carManager);
             //BrandTest(brandManager);
             //ColorTest(colorManager);
+            //RentDetailTest(carManager);
 
+
+
+        }
+
+        private static void RentDetailTest(CarManager carManager)
+        {
             foreach (var rentDetailsDto in carManager.GetRentDetailsDto())
             {
-                Console.WriteLine($"Araç adı: {rentDetailsDto.BrandName} {rentDetailsDto.CarName} Araç rengi: {rentDetailsDto.ColorName} Günlük Fiyatı: {rentDetailsDto.DailyPrice}");
+                Console.WriteLine(
+                    $"Araç adı: {rentDetailsDto.BrandName} {rentDetailsDto.CarName} Araç rengi: {rentDetailsDto.ColorName} Günlük Fiyatı: {rentDetailsDto.DailyPrice}");
             }
-
-
         }
 
         private static void ColorTest(ColorManager colorManager)

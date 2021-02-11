@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Business.Constants;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 
 namespace Business.Concrete
 {
@@ -17,46 +20,23 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            if (CheckCarNameLength(car))
+            if (car.Description.Length>2)
             {
-                if (CheckCarDailyPrice(car))
+                if (car.DailyPrice > 0)
                 {
                     _carDal.Add(car);
+                    return new SuccesResult(Messages.CarAdded);
                 }
                 else
                 {
-                    Console.WriteLine("Araba eklenemedi! Arabanın günlük fiyatı 0 TL den büyük olmalıdır.");
+                    return new ErrorResult(Messages.CarDailyPriceInvalid);
                 }
             }
             else
             {
-                Console.WriteLine("Araba eklenemedi! Araba ismi en az 2 karakterden oluşmalıdır.");
-            }
-        }
-
-        public bool CheckCarDailyPrice(Car car)
-        {
-            if (car.DailyPrice > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool CheckCarNameLength(Car car)
-        {
-            if (car.Description.Length >= 2)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
+                return new ErrorResult(Messages.CarNameInvalid);
             }
         }
 
@@ -79,14 +59,16 @@ namespace Business.Concrete
         {
             return _carDal.GetAll(car => car.DailyPrice >= min && car.DailyPrice <= max);
         }
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
+            return new SuccesResult(Messages.CarDeleted);
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _carDal.Update(car);
+            return new ErrorResult(Messages.CarUpdated);
         }
 
         public List<RentDetailsDto> GetRentDetailsDto()

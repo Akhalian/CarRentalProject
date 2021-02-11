@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Utilities.Results.Abstract;
 using Entities.DTOs;
 
 namespace Business.Abstract
@@ -12,11 +13,9 @@ namespace Business.Abstract
         List<Car> GetCarsByBrandId(int id);
         List<Car> GetCarsByColorId(int id);
         List<Car> GetCarsDailyPrice(decimal min, decimal max);
-        bool CheckCarNameLength(Car car);
-        bool CheckCarDailyPrice(Car car);
-        void Add(Car car);
-        void Delete(Car car);
-        void Update(Car car);
+        IResult Add(Car car);
+        IResult Delete(Car car);
+        IResult Update(Car car);
         List<RentDetailsDto> GetRentDetailsDto();
 
     }
