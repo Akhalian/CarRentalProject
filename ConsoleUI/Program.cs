@@ -33,7 +33,9 @@ namespace ConsoleUI
             //CarTest(carManager);
             //BrandTest(brandManager);
             //ColorTest(colorManager);
-            //RentDetailTest(carManager);
+            RentDetailTest(carManager);
+
+            
 
 
 
@@ -50,6 +52,7 @@ namespace ConsoleUI
                     $"Günlük Fiyatı: {rentDetailsDto.DailyPrice}");
             }
 
+            Console.WriteLine(result.Message);
         }
 
         private static void ColorTest(ColorManager colorManager)
