@@ -22,24 +22,24 @@ namespace Business.Concrete
         public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
-            return new SuccesResult(Messages.BrandAdded);
+            return new SuccesResult(BrandMessages.BrandAdded);
         }
 
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
-            return new SuccesResult(Messages.BrandDeleted);
+            return new SuccesResult(BrandMessages.BrandDeleted);
         }
 
         public IDataResult<List<Brand>> GetBrands()
         {
-            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandsListed);
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), BrandMessages.BrandsListed);
         }
 
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
-            return new SuccesResult(Messages.BrandUpdated);
+            return new SuccesResult(BrandMessages.BrandUpdated);
         }
     }
 }

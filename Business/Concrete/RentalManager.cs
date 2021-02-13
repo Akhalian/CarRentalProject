@@ -4,28 +4,42 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Business.Constants;
+using Core.Utilities.Results.Concrete;
+using DataAccess.Abstract;
 
 namespace Business.Concrete
 {
     public class RentalManager : IRentalService
     {
+        IRentalDal _rentalDal;
+
+        public RentalManager(IRentalDal rentalDal)
+        {
+            _rentalDal = rentalDal;
+        }
+
         public IResult Add(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Add(rental);
+            return new SuccesResult(RentalMessages.RentalAdded);
         }
 
         public IResult Delete(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Delete(rental);
+            return new SuccesResult(RentalMessages.RentalDeleted);
         }
 
         public IDataResult<List<Rental>> GetRentals()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(),RentalMessages.RentalsListed);
         }
 
         public IResult Update(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Update(rental);
+            return new SuccesResult(RentalMessages.RentalUpdated);
         }
     }
+}

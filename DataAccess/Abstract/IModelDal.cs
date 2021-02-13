@@ -6,7 +6,7 @@ using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    interface IModelDal : IEntityRepository<Model>
+    public interface IModelDal : IEntityRepository<Model>
     {
     }
 }

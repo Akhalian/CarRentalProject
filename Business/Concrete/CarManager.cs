@@ -27,53 +27,53 @@ namespace Business.Concrete
                 if (car.DailyPrice > 0)
                 {
                     _carDal.Add(car);
-                    return new SuccesResult(Messages.CarAdded);
+                    return new SuccesResult(CarMessages.CarAdded);
                 }
                 else
                 {
-                    return new ErrorResult(Messages.CarDailyPriceInvalid);
+                    return new ErrorResult(CarMessages.CarDailyPriceInvalid);
                 }
             }
             else
             {
-                return new ErrorResult(Messages.CarNameInvalid);
+                return new ErrorResult(CarMessages.CarNameInvalid);
             }
         }
 
         public IDataResult<List<Car>> GetCars()
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), CarMessages.CarsListed);
         }
 
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.BrandId == id),Messages.CarsListedByBrandId);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.BrandId == id),CarMessages.CarsListedByBrandId);
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.ColorId == id),Messages.CarsListedByColorId);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.ColorId == id),CarMessages.CarsListedByColorId);
         }
 
         public IDataResult<List<Car>> GetCarsByDailyPrice(decimal min, decimal max)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.DailyPrice >= min && car.DailyPrice <= max), Messages.CarsListedByDailyPrice);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.DailyPrice >= min && car.DailyPrice <= max), CarMessages.CarsListedByDailyPrice);
         }
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new SuccesResult(Messages.CarDeleted);
+            return new SuccesResult(CarMessages.CarDeleted);
         }
 
         public IResult Update(Car car)
         {
             _carDal.Update(car);
-            return new ErrorResult(Messages.CarUpdated);
+            return new ErrorResult(CarMessages.CarUpdated);
         }
 
         public IDataResult<List<RentDetailsDto>> GetRentDetailsDto()
         {
-            return new SuccessDataResult<List<RentDetailsDto>>(_carDal.getRentDetails(),Messages.CarsRentDetailsDto);
+            return new SuccessDataResult<List<RentDetailsDto>>(_carDal.getRentDetails(),CarMessages.CarsRentDetailsDto);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
+            UserManager userManager = new UserManager(new EfUserDal());
 
             //carManager.Add(new Car() { CarId = 6, BrandId = 2, ColorId = 4, DailyPrice = 400, Description = "Passat", ModelYear = 2016 });
             //carManager.Update(new Car() { CarId = 2, BrandId = 2, ColorId = 2, DailyPrice = 350, Description = "Golf", ModelYear = 2016 });
@@ -25,17 +26,26 @@ namespace ConsoleUI
             //brandManager.Add(new Brand() { BrandId = 4, BrandName = "Renault" });
             //brandManager.Add(new Brand() { BrandId = 5, BrandName = "Audi" });
 
-            //colorManager.Add(new Color(){ColorId = 1, ColorName = "Beyaz"});
+            //colorManager.Add(new Color() { ColorId = 1, ColorName = "Beyaz" });
             //colorManager.Add(new Color() { ColorId = 2, ColorName = "Siyah" });
             //colorManager.Add(new Color() { ColorId = 3, ColorName = "Kırmızı" });
             //colorManager.Add(new Color() { ColorId = 4, ColorName = "Gri" });
 
+            //userManager.Add(new User() { Id = 7, Email = "burakbaskin07@gmail.com", FirstName = "Burak", LastName = "Baskın", Password = "12345"});
+
             //CarTest(carManager);
             //BrandTest(brandManager);
             //ColorTest(colorManager);
-            RentDetailTest(carManager);
+            //RentDetailTest(carManager);
 
-            
+            foreach (var user in userManager.GetUsers().Data)
+            {
+                Console.WriteLine(user.FirstName);
+            }
+
+
+
+
 
 
 
