@@ -14,11 +14,11 @@ namespace ConsoleUI
             ColorManager colorManager = new ColorManager(new EfColorDal());
             UserManager userManager = new UserManager(new EfUserDal());
 
-            //carManager.Add(new Car() { CarId = 6, BrandId = 2, ColorId = 4, DailyPrice = 400, Description = "Passat", ModelYear = 2016 });
-            //carManager.Update(new Car() { CarId = 2, BrandId = 2, ColorId = 2, DailyPrice = 350, Description = "Golf", ModelYear = 2016 });
-            //carManager.Update(new Car() { CarId = 3, BrandId = 3, ColorId = 3, DailyPrice = 200, Description = "Linea", ModelYear = 2019 });
-            //carManager.Update(new Car() { CarId = 4, BrandId = 4, ColorId = 4, DailyPrice = 250, Description = "Magane", ModelYear = 2017 });
-            //carManager.Update(new Car() { CarId = 5, BrandId = 5, ColorId = 2, DailyPrice = 400, Description = "A3", ModelYear = 2014 });
+            //carManager.Add(new Car() { CarId = 1, BrandId = 2, ColorId = 1, DailyPrice = 200, Description = "Focus", ModelYear = 2016 });
+            //carManager.Add(new Car() { CarId = 2, BrandId = 2, ColorId = 2, DailyPrice = 250, Description = "Golf", ModelYear = 2016 });
+            //carManager.Add(new Car() { CarId = 3, BrandId = 3, ColorId = 3, DailyPrice = 180, Description = "Linea", ModelYear = 2019 });
+            //carManager.Add(new Car() { CarId = 4, BrandId = 4, ColorId = 4, DailyPrice = 240, Description = "Megane", ModelYear = 2017 });
+            //carManager.Add(new Car() { CarId = 5, BrandId = 5, ColorId = 2, DailyPrice = 300, Description = "A3", ModelYear = 2014 });
 
             //brandManager.Add(new Brand() { BrandId = 1, BrandName = "Ford" });
             //brandManager.Add(new Brand() { BrandId = 2, BrandName = "Volkswagen" });
@@ -31,17 +31,12 @@ namespace ConsoleUI
             //colorManager.Add(new Color() { ColorId = 3, ColorName = "Kırmızı" });
             //colorManager.Add(new Color() { ColorId = 4, ColorName = "Gri" });
 
-            //userManager.Add(new User() { Id = 7, Email = "burakbaskin07@gmail.com", FirstName = "Burak", LastName = "Baskın", Password = "12345"});
+            //userManager.Add(new User() { UserId = 1, Email = "burakbaskin07@gmail.com", FirstName = "Burak", LastName = "Baskın", Password = "12345" });
 
             //CarTest(carManager);
             //BrandTest(brandManager);
             //ColorTest(colorManager);
             //RentDetailTest(carManager);
-
-            foreach (var user in userManager.GetUsers().Data)
-            {
-                Console.WriteLine(user.FirstName);
-            }
 
 
 

@@ -21,8 +21,15 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
-            _rentalDal.Add(rental);
-            return new SuccesResult(RentalMessages.RentalAdded);
+            if (rental.ReturnDate != DateTime.MinValue)
+            {
+                _rentalDal.Add(rental);
+                return new SuccesResult(RentalMessages.RentalAdded);
+            }
+            else
+            {
+                return new ErrorResult();
+            }
         }
 
         public IResult Delete(Rental rental)
