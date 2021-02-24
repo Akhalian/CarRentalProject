@@ -7,8 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
+using FluentValidation;
 
 namespace Business.Concrete
 {
@@ -22,22 +25,11 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.Description.Length>2)
-            {
-                if (car.DailyPrice > 0)
-                {
-                    _carDal.Add(car);
-                    return new SuccesResult(CarMessages.CarAdded);
-                }
-                else
-                {
-                    return new ErrorResult(CarMessages.CarDailyPriceInvalid);
-                }
-            }
-            else
-            {
-                return new ErrorResult(CarMessages.CarNameInvalid);
-            }
+            ValidationTool.Validate(new CarValidator(), car);
+
+            _carDal.Add(car);
+
+            return new SuccesResult(CarMessages.CarAdded);
         }
 
         public IDataResult<List<Car>> GetCars()
