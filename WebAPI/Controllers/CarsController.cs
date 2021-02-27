@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
             _carService = carService;
         }
 
-        [HttpPost("addcar")]
+        [HttpPost("add")]
         public IActionResult AddCar(Car car)
         {
             var result = _carService.Add(car);
@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("deletecar")]
+        [HttpPost("delete")]
         public IActionResult DeleteCar(Car car)
         {
             var result = _carService.Delete(car);
@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("updatecar")]
+        [HttpPost("update")]
         public IActionResult UpdateCar(Car car)
         {
             var result = _carService.Update(car);
@@ -55,7 +55,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getcars")]
+        [HttpGet("getall")]
         public IActionResult GetCars()
         {
             var result = _carService.GetCars();
@@ -67,10 +67,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getcarsbybrandid")]
+        [HttpGet("getbybrandid")]
         public IActionResult GetCarsByBrandId(int id)
         {
-            var result = _carService.GetCars();
+            var result = _carService.GetCarsByBrandId(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -79,7 +79,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getcarsbycolorid")]
+        [HttpGet("getbycolorid")]
         public IActionResult GetCarsByColorId(int id)
         {
             var result = _carService.GetCarsByColorId(id);
@@ -91,7 +91,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getcarsbydailyprice")]
+        [HttpGet("getbydailyprice")]
         public IActionResult GetCarsByDailyPrice(decimal min, decimal max)
         {
             var result = _carService.GetCarsByDailyPrice(min, max);

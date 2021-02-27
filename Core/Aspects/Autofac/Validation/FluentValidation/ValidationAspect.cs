@@ -16,7 +16,7 @@ namespace Core.Aspects.Autofac.Validation.FluentValidation
         {
             if (!typeof(IValidator).IsAssignableFrom(validatorType))
             {
-                throw new System.Exception("Bu bir doğrulama sınıfı.");
+                throw new System.Exception("Bu bir dogrulama sinifi degil.");
             }
 
             _validatorType = validatorType;

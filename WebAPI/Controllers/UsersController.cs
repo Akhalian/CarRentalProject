@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
             _userService = userService;
         }
 
-        [HttpPost("adduser")]
+        [HttpPost("add")]
         public IActionResult AddUser(User user)
         {
             var result = _userService.Add(user);
@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("deleteuser")]
+        [HttpPost("delete")]
         public IActionResult DeleteUser(User user)
         {
             var result = _userService.Delete(user);
@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("updateuser")]
+        [HttpPost("update")]
         public IActionResult UpdateUser(User user)
         {
             var result = _userService.Update(user);
@@ -55,7 +55,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getusers")]
+        [HttpGet("getall")]
         public IActionResult GetUsers()
         {
             var result = _userService.GetUsers();
