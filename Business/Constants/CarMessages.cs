@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Business.Abstract;
-
-namespace Business.Constants
+﻿namespace Business.Constants
 {
-    class CarMessages : IMessages
+    class CarMessages : Messages, IMessages
     {
-        public static string CarAdded = "Araba eklendi.";
-        public static string CarNameInvalid = "Arabanın ismi 2 karakterden uzun olmalıdır.";
-        public static string CarDailyPriceInvalid = "Arabanın günlük kira bedeli 0'dan büyük olmalıdır.";
+        public static string Car = "Araba";
+        public static string Cars = " Arabalar";
 
-        public static string CarUpdated = "Araba güncellendi.";
+        public static string CarAdded = Car + Added;
+        public static string CarNameInvalid = Car + " ismi 2 karakterden uzun olmalıdır.";
+        public static string CarDailyPriceInvalid = Car + " günlük kira bedeli 0'dan büyük olmalıdır.";
 
-        public static string CarDeleted = "Araba silindi.";
+        public static string CarUpdated = Car + Updated;
 
-        public static string CarsListed = "Arabalar listelendi";
-        public static string CarsListedByBrandId = "Markalara göre arabalar listelendi.";
-        public static string CarsListedByColorId = "Renklere göre arabalar listelendi.";
-        public static string CarsListedByDailyPrice = "Günlük fiyata göre arabalar listelendi.";
+        public static string CarDeleted = Car + Deleted;
 
-        public static string CarsRentDetailsDto = "Arabalar detaylarıyla listelendi.";
+        public static string CarsListed = Cars + Listed;
+        public static string CarsListedByBrandId = Cars + " markalara göre " + Listed;
+        public static string CarsListedByColorId = Cars + " renklere göre " + Listed;
+        public static string CarsListedByDailyPrice = Cars + " fiyata göre " + Listed;
+        public static string CarsRentDetailsDto = Cars + " detaylarıyla " + Listed;
     }
 }

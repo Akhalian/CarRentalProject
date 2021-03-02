@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Business.Abstract;
-
-namespace Business.Constants
+﻿namespace Business.Constants
 {
-    class ColorMessages : IMessages
+    class ColorMessages : Messages, IMessages
     {
-        public static string ColorAdded = "Renk eklendi.";
-        public static string ColorUpdated = "Renk güncellendi.";
-        public static string ColorDeleted = "Renk silindi.";
-        public static string ColorsListed = "Renkler listelendi";
+        public static string Color = "Renk";
+        public static string Colors = "Renkler";
+
+        public static string ColorAdded = Color + Added;
+        public static string ColorUpdated = Color + Updated;
+        public static string ColorDeleted = Color + Deleted;
+        public static string ColorsListed = Colors + Listed;
     }
 }

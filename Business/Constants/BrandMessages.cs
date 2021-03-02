@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Business.Abstract;
-
-namespace Business.Constants
+﻿namespace Business.Constants
 {
-    class BrandMessages : IMessages
+    class BrandMessages : Messages, IMessages
     {
-        public static string BrandAdded = "Marka eklendi.";
-        public static string BrandUpdated = "Marka güncellendi.";
-        public static string BrandDeleted = "Marka silindi.";
-        public static string BrandsListed = "Markalar listelendi";
+        public static string Brand = "Marka";
+        public static string Brands = "Markalar";
+
+        public static string BrandAdded = Brand + Added;
+        public static string BrandUpdated = Brand + Updated;
+        public static string BrandDeleted = Brand + Deleted;
+        public static string BrandsListed = Brands + Listed;
     }
 }

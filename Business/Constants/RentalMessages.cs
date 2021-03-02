@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Business.Abstract;
-
-namespace Business.Constants
+﻿namespace Business.Constants
 {
-    class RentalMessages : IMessages
+    class RentalMessages : Messages, IMessages
     {
-        public static string RentalAdded = "Kira eklendi";
-        public static string RentalUpdated = "Kira güncellendi";
-        public static string RentalDeleted = "Kira silindi";
-        public static string RentalsListed = "Kiralar listelendi";
+        public static string Rental = "Kiralama";
+        public static string Rentals = "Kiralamalar";
+
+        public static string RentalAdded = Rental + Added;
+        public static string RentalUpdated = Rental + Updated;
+        public static string RentalDeleted = Rental + Deleted;
+        public static string RentalsListed = Rentals + Listed;
     }
 }

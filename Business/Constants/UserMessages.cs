@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Business.Abstract;
-
-namespace Business.Constants
+﻿namespace Business.Constants
 {
-    class UserMessages : IMessages
+    class UserMessages : Messages, IMessages
     {
-        public static string UserAdded = "Kullanıcı eklendi";
-        public static string UserUpdated = "Kullanıcı güncellendi";
-        public static string UserDeleted = "Kullanıcı silindi";
-        public static string UsersListed = "Kullanıcılar listelendi";
+        public static string User = "Kullanıcı";
+        public static string Users = "Kullanıcılar";
+
+        public static string UserAdded = User + Added;
+        public static string UserUpdated = User + Updated;
+        public static string UserDeleted = User + Deleted;
+        public static string UsersListed = Users + Listed;
     }
 }

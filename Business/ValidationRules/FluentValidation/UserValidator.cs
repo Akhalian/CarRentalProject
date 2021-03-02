@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using Core;
+using Core.Entities.Concrete;
 using Entities.Concrete;
 using FluentValidation;
 
@@ -14,11 +16,11 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(u => u.FirstName).NotEmpty();
             RuleFor(u => u.LastName).NotEmpty();
             RuleFor(u => u.Email).NotEmpty();
-            RuleFor(u => u.Password).NotEmpty();
-            RuleFor(u => u.Password).MinimumLength(8);
-            RuleFor(u => u.Password).Must(HaveACapitalLetter);
-            RuleFor(u => u.Password).Must(HaveALowerLetter);
-            RuleFor(u => u.Password).Must(HaveANumber);
+            //RuleFor(u => u.Password).NotEmpty();
+            //RuleFor(u => u.Password).MinimumLength(8);
+            //RuleFor(u => u.Password).Must(HaveACapitalLetter);
+            //RuleFor(u => u.Password).Must(HaveALowerLetter);
+            //RuleFor(u => u.Password).Must(HaveANumber);
         }
 
         private bool HaveANumber(string arg)
