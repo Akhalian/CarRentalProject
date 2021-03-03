@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,5 +11,9 @@ namespace Business.Constants
         public static string Updated = " güncellendi";
         public static string Deleted = " silindi";
         public static string Listed = " listelendi";
+
+        public static string AlreadyExists = " mevcut";
+        public static string NotFound = " bulunamadı";
+
     }
 }

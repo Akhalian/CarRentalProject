@@ -2,9 +2,11 @@
 
 namespace Entities.DTOs
 {
-    public class UserForLoginDto : IDtos
+    public class UserForRegisterDto : IDtos
     {
         public string Email { get; set; }
         public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

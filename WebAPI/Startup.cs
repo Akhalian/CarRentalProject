@@ -1,19 +1,12 @@
+using Core.Utilities.Security.Encryption;
+using Core.Utilities.Security.JWT;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Business.Abstract;
-using Business.Concrete;
-using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
+using Microsoft.IdentityModel.Tokens;
 
 namespace WebAPI
 {
@@ -30,23 +23,27 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder=>builder.WithOrigins("http://localhost:4200"));
+            });
 
-            //services.AddSingleton<IBrandService, BrandManager>();
-            //services.AddSingleton<ICarService, CarManager>();
-            //services.AddSingleton<IColorService, ColorManager>();
-            //services.AddSingleton<ICustomerService, CustomerManager>();
-            //services.AddSingleton<IRentalService, RentalManager>();
-            //services.AddSingleton<IUserService, UserManager>();
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
-            //services.AddSingleton<IBrandDal, EfBrandDal>();
-            //services.AddSingleton<ICarDal, EfCarDal>();
-            //services.AddSingleton<IColorDal, EfColorDal>();
-            //services.AddSingleton<ICustomerDal, EfCustomerDal>();
-            //services.AddSingleton<IRentalDal, EfRentalDal>();
-            //services.AddSingleton<IUserDal, EfUserDal>();
-
-            services.AddSingleton<ICarImageService, CarImageManager>();
-            services.AddSingleton<ICarImageDal, EfCarImageDal>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = tokenOptions.Issuer,
+                    ValidAudience = tokenOptions.Audience,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,11 +54,15 @@ namespace WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

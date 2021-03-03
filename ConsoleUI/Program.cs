@@ -14,22 +14,22 @@ namespace ConsoleUI
             ColorManager colorManager = new ColorManager(new EfColorDal());
             UserManager userManager = new UserManager(new EfUserDal());
 
-            //carManager.Add(new Car() { CarId = 1, BrandId = 2, ColorId = 1, DailyPrice = 200, Description = "Focus", ModelYear = 2016 });
-            //carManager.Add(new Car() { CarId = 2, BrandId = 2, ColorId = 2, DailyPrice = 250, Description = "Golf", ModelYear = 2016 });
-            //carManager.Add(new Car() { CarId = 3, BrandId = 3, ColorId = 3, DailyPrice = 180, Description = "Linea", ModelYear = 2019 });
-            //carManager.Add(new Car() { CarId = 4, BrandId = 4, ColorId = 4, DailyPrice = 240, Description = "Megane", ModelYear = 2017 });
-            //carManager.Add(new Car() { CarId = 5, BrandId = 5, ColorId = 2, DailyPrice = 300, Description = "A3", ModelYear = 2014 });
+            //carManager.Update(new Car() { CarId = 1, BrandId = 1, ColorId = 1, DailyPrice = 200, Description = "Focus", ModelYear = 2016 });
+            //carManager.Add(new Car() { BrandId = 2, ColorId = 2, DailyPrice = 250, Description = "Golf", ModelYear = 2016 });
+            //carManager.Add(new Car() { BrandId = 3, ColorId = 3, DailyPrice = 180, Description = "Linea", ModelYear = 2019 });
+            //carManager.Add(new Car() { BrandId = 4, ColorId = 4, DailyPrice = 240, Description = "Megane", ModelYear = 2017 });
+            //carManager.Add(new Car() { BrandId = 5, ColorId = 2, DailyPrice = 300, Description = "A3", ModelYear = 2014 });
 
-            //brandManager.Add(new Brand() { BrandId = 1, BrandName = "Ford" });
-            //brandManager.Add(new Brand() { BrandId = 2, BrandName = "Volkswagen" });
-            //brandManager.Add(new Brand() { BrandId = 3, BrandName = "Fiat" });
-            //brandManager.Add(new Brand() { BrandId = 4, BrandName = "Renault" });
-            //brandManager.Add(new Brand() { BrandId = 5, BrandName = "Audi" });
+            //brandManager.Add(new Brand() { BrandName = "Ford" });
+            //brandManager.Add(new Brand() { BrandName = "Volkswagen" });
+            //brandManager.Add(new Brand() { BrandName = "Fiat" });
+            //brandManager.Add(new Brand() { BrandName = "Renault" });
+            //brandManager.Add(new Brand() { BrandName = "Audi" });
 
-            //colorManager.Add(new Color() { ColorId = 1, ColorName = "Beyaz" });
-            //colorManager.Add(new Color() { ColorId = 2, ColorName = "Siyah" });
-            //colorManager.Add(new Color() { ColorId = 3, ColorName = "Kırmızı" });
-            //colorManager.Add(new Color() { ColorId = 4, ColorName = "Gri" });
+            //colorManager.Add(new Color() { ColorName = "Beyaz" });
+            //colorManager.Add(new Color() { ColorName = "Siyah" });
+            //colorManager.Add(new Color() { ColorName = "Kırmızı" });
+            //colorManager.Add(new Color() { ColorName = "Gri" });
 
             //userManager.Add(new User() { UserId = 1, Email = "burakbaskin07@gmail.com", FirstName = "Burak", LastName = "Baskın", Password = "12345" });
 
@@ -37,13 +37,16 @@ namespace ConsoleUI
             //BrandTest(brandManager);
             //ColorTest(colorManager);
             //RentDetailTest(carManager);
+            //UserTest(userManager);
+        }
 
-
-
-
-
-
-
+        private static void UserTest(UserManager userManager)
+        {
+            var result = userManager.GetUsers();
+            foreach (var user in result.Data)
+            {
+                Console.WriteLine(user);
+            }
         }
 
         private static void RentDetailTest(CarManager carManager)
