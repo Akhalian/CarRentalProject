@@ -2,6 +2,11 @@
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
+using System.Collections.Generic;
+using Core.Entities.Concrete;
+using Core.Utilities.Security.JWT;
+using Entities.DTOs;
+using Microsoft.Extensions.Configuration;
 
 namespace ConsoleUI
 {
@@ -12,7 +17,6 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            UserManager userManager = new UserManager(new EfUserDal());
 
             //carManager.Update(new Car() { CarId = 1, BrandId = 1, ColorId = 1, DailyPrice = 200, Description = "Focus", ModelYear = 2016 });
             //carManager.Add(new Car() { BrandId = 2, ColorId = 2, DailyPrice = 250, Description = "Golf", ModelYear = 2016 });
@@ -31,8 +35,6 @@ namespace ConsoleUI
             //colorManager.Add(new Color() { ColorName = "Kırmızı" });
             //colorManager.Add(new Color() { ColorName = "Gri" });
 
-            //userManager.Add(new User() { UserId = 1, Email = "burakbaskin07@gmail.com", FirstName = "Burak", LastName = "Baskın", Password = "12345" });
-
             //CarTest(carManager);
             //BrandTest(brandManager);
             //ColorTest(colorManager);
@@ -42,7 +44,7 @@ namespace ConsoleUI
 
         private static void UserTest(UserManager userManager)
         {
-            var result = userManager.GetUsers();
+            var result = userManager.GetAll();
             foreach (var user in result.Data)
             {
                 Console.WriteLine(user);

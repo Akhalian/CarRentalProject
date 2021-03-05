@@ -24,7 +24,7 @@ namespace Business.Concrete
             if (rental.ReturnDate != DateTime.MinValue)
             {
                 _rentalDal.Add(rental);
-                return new SuccesResult(RentalMessages.RentalAdded);
+                return new SuccessResult(RentalMessages.RentalAdded);
             }
             else
             {
@@ -35,7 +35,7 @@ namespace Business.Concrete
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
-            return new SuccesResult(RentalMessages.RentalDeleted);
+            return new SuccessResult(RentalMessages.RentalDeleted);
         }
 
         public IDataResult<List<Rental>> GetRentals()
@@ -46,7 +46,7 @@ namespace Business.Concrete
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);
-            return new SuccesResult(RentalMessages.RentalUpdated);
+            return new SuccessResult(RentalMessages.RentalUpdated);
         }
     }
 }

@@ -6,12 +6,12 @@ namespace Core.Utilities.Results.Concrete
 {
     public class ErrorResult : Result
     {
-        public ErrorResult(string message) : base(true, message)
+        public ErrorResult(string message) : base(false, message)
         {
 
         }
 
-        public ErrorResult() : base(true)
+        public ErrorResult() : base(false)
         {
 
         }

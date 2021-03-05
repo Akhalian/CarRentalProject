@@ -22,13 +22,13 @@ namespace Business.Concrete
         public IResult Add(Color color)
         {
             _colorDal.Add(color);
-            return new SuccesResult(ColorMessages.ColorAdded);
+            return new SuccessResult(ColorMessages.ColorAdded);
         }
 
         public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
-            return new SuccesResult(ColorMessages.ColorDeleted);
+            return new SuccessResult(ColorMessages.ColorDeleted);
         }
 
         public IDataResult<List<Color>> GetColors()
@@ -39,7 +39,7 @@ namespace Business.Concrete
         public IResult Update(Color color)
         {
             _colorDal.Update(color);
-            return new SuccesResult(ColorMessages.ColorUpdated);
+            return new SuccessResult(ColorMessages.ColorUpdated);
         }
     }
 }

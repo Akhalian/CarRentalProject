@@ -11,41 +11,49 @@ namespace Business.Concrete
     public class UserManager : IUserService
     {
         IUserDal _userDal;
+
         public UserManager(IUserDal userDal)
         {
             _userDal = userDal;
-        }
-        public IDataResult<List<User>> GetUsers()
-        {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(), UserMessages.UsersListed);
         }
 
         public IResult Add(User user)
         {
             _userDal.Add(user);
-            return new SuccesResult(UserMessages.UserAdded);
+            return new SuccessResult(UserMessages.Added);
         }
 
         public IResult Delete(User user)
         {
             _userDal.Delete(user);
-            return new SuccesResult(UserMessages.UserDeleted);
+            return new SuccessResult(UserMessages.Deleted);
+        }
+
+        public IDataResult<List<User>> GetAll()
+        {
+            return new SuccessDataResult<List<User>>(_userDal.GetAll());
+        }
+
+        public IDataResult<User> GetById(int id)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(I => I.UserId == id));
+        }
+
+        public User GetByMail(string email)
+        {
+            return _userDal.Get(u => u.Email == email);
+        }
+
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
         }
 
         public IResult Update(User user)
         {
             _userDal.Update(user);
-            return new SuccesResult(UserMessages.UserUpdated);
+            return new SuccessResult(UserMessages.Updated);
         }
 
-        public IDataResult<List<OperationClaim>> GetClaims(User user)
-        {
-            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));
-        }
-
-        public IDataResult<User> GetByMail(string email)
-        {
-            return new SuccessDataResult<User>(_userDal.Get(u=> u.Email == email));
-        }
     }
 }

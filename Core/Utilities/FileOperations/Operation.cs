@@ -68,7 +68,7 @@ namespace Core.Utilities.FileOperations
                 return new ErrorResult(exception.Message);
             }
 
-            return new SuccesResult();
+            return new SuccessResult();
         }
 
         public static (string newPath, string Path2) newPath(IFormFile file)

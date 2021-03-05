@@ -39,7 +39,7 @@ namespace Business.Concrete
             carImage.ImagePath = Operation.AddAsync(file);
             carImage.Date = DateTime.Now;
             _carImageDal.Add(carImage);
-            return new SuccesResult();
+            return new SuccessResult();
         }
 
         [ValidationAspect(typeof(CarImageValidator))]
@@ -49,7 +49,7 @@ namespace Business.Concrete
             carImage.ImagePath = Operation.UpdateAsync(oldpath, file);
             carImage.Date = DateTime.Now;
             _carImageDal.Update(carImage);
-            return new SuccesResult();
+            return new SuccessResult();
 
         }
 
@@ -67,7 +67,7 @@ namespace Business.Concrete
             }
 
             _carImageDal.Delete(carImage);
-            return new SuccesResult();
+            return new SuccessResult();
         }
 
         public IDataResult<CarImage> Get(int id)
@@ -123,7 +123,7 @@ namespace Business.Concrete
                 return new ErrorResult();
             }
 
-            return new SuccesResult();
+            return new SuccessResult();
         }
 
     }

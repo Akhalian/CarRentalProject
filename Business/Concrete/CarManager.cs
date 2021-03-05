@@ -30,7 +30,7 @@ namespace Business.Concrete
 
             _carDal.Add(car);
 
-            return new SuccesResult(CarMessages.CarAdded);
+            return new SuccessResult(CarMessages.CarAdded);
         }
 
         public IDataResult<List<Car>> GetCars()
@@ -55,7 +55,7 @@ namespace Business.Concrete
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new SuccesResult(CarMessages.CarDeleted);
+            return new SuccessResult(CarMessages.CarDeleted);
         }
 
         public IResult Update(Car car)

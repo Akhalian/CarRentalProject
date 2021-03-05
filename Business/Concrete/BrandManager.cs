@@ -20,13 +20,13 @@ namespace Business.Concrete
         public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
-            return new SuccesResult(BrandMessages.BrandAdded);
+            return new SuccessResult(BrandMessages.BrandAdded);
         }
 
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
-            return new SuccesResult(BrandMessages.BrandDeleted);
+            return new SuccessResult(BrandMessages.BrandDeleted);
         }
 
         public IDataResult<List<Brand>> GetBrands()
@@ -37,7 +37,7 @@ namespace Business.Concrete
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
-            return new SuccesResult(BrandMessages.BrandUpdated);
+            return new SuccessResult(BrandMessages.BrandUpdated);
         }
     }
 }

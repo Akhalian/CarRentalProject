@@ -21,10 +21,10 @@ namespace Business.Concrete
             _tokenHelper = tokenHelper;
         }
 
-        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
+        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
             var user = new User
             {
                 Email = userForRegisterDto.Email,
@@ -40,8 +40,8 @@ namespace Business.Concrete
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
-            var userToCheck = _userService.GetByMail(userForLoginDto.Email).Data;
-            if (userToCheck == null)
+            var userToCheck = _userService.GetByMail(userForLoginDto.Email);
+            if (userToCheck.Email == null)
             {
                 return new ErrorDataResult<User>(UserMessages.UserNotFound);
             }
@@ -51,22 +51,22 @@ namespace Business.Concrete
                 return new ErrorDataResult<User>(UserMessages.PasswordError);
             }
 
-            return new SuccessDataResult<User>(userToCheck,UserMessages.SuccessfulLogin);
+            return new SuccessDataResult<User>(userToCheck, UserMessages.SuccessfulLogin);
         }
 
         public IResult UserExists(string email)
         {
-            if (_userService.GetByMail(email)!=null)
+            if (_userService.GetByMail(email) != null)
             {
                 return new ErrorResult(UserMessages.UserAlreadyExists);
             }
 
-            return new SuccesResult();
+            return new SuccessResult();
         }
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
-            var claims = _userService.GetClaims(user).Data;
+            var claims = _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);
             return new SuccessDataResult<AccessToken>(accessToken, UserMessages.AccessTokenCreated);
         }

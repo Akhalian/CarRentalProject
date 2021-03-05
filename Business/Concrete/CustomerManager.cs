@@ -27,19 +27,19 @@ namespace Business.Concrete
         public IResult Add(Customer customer)
         {
             _customerDal.Add(customer);
-            return new SuccesResult(CustomerMessages.CustomerAdded);
+            return new SuccessResult(CustomerMessages.CustomerAdded);
         }
 
         public IResult Delete(Customer customer)
         {
             _customerDal.Delete(customer);
-            return new SuccesResult(CustomerMessages.CustomerDeleted);
+            return new SuccessResult(CustomerMessages.CustomerDeleted);
         }
 
         public IResult Update(Customer customer)
         {
             _customerDal.Update(customer);
-            return new SuccesResult(CustomerMessages.CustomerUpdated);
+            return new SuccessResult(CustomerMessages.CustomerUpdated);
         }
     }
 }

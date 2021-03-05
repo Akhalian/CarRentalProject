@@ -15,5 +15,7 @@ namespace Business.Constants
         public static string AlreadyExists = " mevcut";
         public static string NotFound = " bulunamadı";
 
+        public static string Denied = " reddedildi";
+
     }
 }

@@ -60,7 +60,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetUsers()
         {
-            var result = _userService.GetUsers();
+            var result = _userService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
