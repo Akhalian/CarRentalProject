@@ -6,8 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Business.BusinessAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation.FluentValidation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstract;
@@ -24,7 +26,9 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
 
@@ -33,21 +37,25 @@ namespace Business.Concrete
             return new SuccessResult(CarMessages.CarAdded);
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetCars()
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), CarMessages.CarsListed);
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.BrandId == id),CarMessages.CarsListedByBrandId);
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.ColorId == id),CarMessages.CarsListedByColorId);
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetCarsByDailyPrice(decimal min, decimal max)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(car => car.DailyPrice >= min && car.DailyPrice <= max), CarMessages.CarsListedByDailyPrice);
@@ -58,6 +66,8 @@ namespace Business.Concrete
             return new SuccessResult(CarMessages.CarDeleted);
         }
 
+        [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             _carDal.Update(car);

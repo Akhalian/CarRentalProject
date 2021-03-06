@@ -1,10 +1,6 @@
-﻿using Core.Utilities.Results.Abstract;
-using System;
+﻿using Core.Entities.Concrete;
+using Core.Utilities.Results.Abstract;
 using System.Collections.Generic;
-using System.Text;
-using Core;
-using Core.Entities.Concrete;
-using Entities.Concrete;
 
 namespace Business.Abstract
 {

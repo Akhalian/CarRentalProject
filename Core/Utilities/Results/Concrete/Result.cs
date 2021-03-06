@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Core.Utilities.Results.Abstract;
-using Microsoft.Data.SqlClient;
+﻿using Core.Utilities.Results.Abstract;
 
 namespace Core.Utilities.Results.Concrete
 {

@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Business.Abstract;
-using Core.Entities.Concrete;
+﻿using Business.Abstract;
 using Entities.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
