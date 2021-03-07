@@ -17,6 +17,6 @@
         public static string CarsListedByBrandId = Cars + " markalara göre " + Listed;
         public static string CarsListedByColorId = Cars + " renklere göre " + Listed;
         public static string CarsListedByDailyPrice = Cars + " fiyata göre " + Listed;
-        public static string CarsRentDetailsDto = Cars + " detaylarıyla " + Listed;
+        public static string GetCarDetails = Cars + " detaylarıyla " + Listed;
     }
 }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Core.Utilities.Results.Abstract;
+﻿using Core.Utilities.Results.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 namespace Business.Abstract
 {

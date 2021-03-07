@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Core.Entities.Concrete;
 using Core.Utilities.Security.JWT;
+using DataAccess.Concrete.EntityFramework.Repository;
 using Entities.DTOs;
 using Microsoft.Extensions.Configuration;
 
@@ -38,7 +39,6 @@ namespace ConsoleUI
             //CarTest(carManager);
             //BrandTest(brandManager);
             //ColorTest(colorManager);
-            //RentDetailTest(carManager);
             //UserTest(userManager);
         }
 
@@ -51,19 +51,6 @@ namespace ConsoleUI
             }
         }
 
-        private static void RentDetailTest(CarManager carManager)
-        {
-            var result = carManager.GetRentDetailsDto();
-            foreach (var rentDetailsDto in result.Data)
-            {
-                Console.WriteLine(
-                    $"Araç adı: {rentDetailsDto.BrandName} {rentDetailsDto.CarName} " +
-                    $"Araç rengi: {rentDetailsDto.ColorName} " +
-                    $"Günlük Fiyatı: {rentDetailsDto.DailyPrice}");
-            }
-
-            Console.WriteLine(result.Message);
-        }
 
         private static void ColorTest(ColorManager colorManager)
         {

@@ -1,12 +1,12 @@
 ﻿using Business.Abstract;
-using Core.Utilities.Results.Abstract;
-using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Business.Constants;
+using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
+using Entities.Concrete;
+using Entities.DTOs;
+using System;
+using System.Collections.Generic;
 
 namespace Business.Concrete
 {
@@ -47,6 +47,11 @@ namespace Business.Concrete
         {
             _rentalDal.Update(rental);
             return new SuccessResult(RentalMessages.RentalUpdated);
+        }
+
+        public IDataResult<List<RentDetailsDto>> GetRentDetails()
+        {
+            return new SuccessDataResult<List<RentDetailsDto>>(_rentalDal.GetRentDetails(), gRentalMessages.GetRentDetails);
         }
     }
 }

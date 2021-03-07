@@ -9,5 +9,7 @@
         public static string RentalUpdated = Rental + Updated;
         public static string RentalDeleted = Rental + Deleted;
         public static string RentalsListed = Rentals + Listed;
+
+        public static string GetRentDetails = Rentals + " detaylarıyla" + Listed;
     }
 }

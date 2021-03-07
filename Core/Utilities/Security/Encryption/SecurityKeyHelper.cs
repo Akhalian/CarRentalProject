@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Core.Utilities.Security.Encryption
 {

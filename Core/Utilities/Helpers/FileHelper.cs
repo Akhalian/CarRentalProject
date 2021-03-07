@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using Core.Utilities.Results.Abstract;
+﻿using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using Microsoft.AspNetCore.Http;
+using System;
+using System.IO;
 
-namespace Core.Utilities.FileOperations
+namespace Core.Utilities.Helpers
 {
-    public class Operation
+    public class FileHelper
     {
         public static string AddAsync(IFormFile file)
         {
@@ -73,7 +71,7 @@ namespace Core.Utilities.FileOperations
 
         public static (string newPath, string Path2) newPath(IFormFile file)
         {
-            System.IO.FileInfo ff = new System.IO.FileInfo(file.FileName);
+            FileInfo ff = new FileInfo(file.FileName);
             string fileExtension = ff.Extension;
 
             var creatingUniqueFilename = Guid.NewGuid().ToString("N")
@@ -81,7 +79,6 @@ namespace Core.Utilities.FileOperations
                + DateTime.Now.Day + "_"
                + DateTime.Now.Year + fileExtension;
 
-            //string path = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).FullName + @"\Images");
 
             string path = Environment.CurrentDirectory + @"\wwwroot\Images";
 
@@ -89,8 +86,6 @@ namespace Core.Utilities.FileOperations
 
             return (result, $"\\Images\\{creatingUniqueFilename}");
         }
-
-
-
     }
 }
+

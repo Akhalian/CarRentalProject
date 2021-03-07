@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using System;
+using Core.Entities;
 
 namespace Entities.DTOs
 {
@@ -8,5 +9,8 @@ namespace Entities.DTOs
         public string BrandName { get; set; }
         public string ColorName { get; set; }
         public decimal DailyPrice { get; set; }
+        public DateTime RentDate { get; set; }
+        public DateTime ReturnDate { get; set; }
+        public string CustomerName { get; set; }
     }
 }

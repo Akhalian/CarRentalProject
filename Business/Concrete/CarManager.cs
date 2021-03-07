@@ -1,20 +1,15 @@
 ﻿using Business.Abstract;
-using DataAccess.Abstract;
-using Entities.Concrete;
-using Entities.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Business.BusinessAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation.FluentValidation;
-using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
-using FluentValidation;
+using DataAccess.Abstract;
+using Entities.Concrete;
+using Entities.DTOs;
+using System.Collections.Generic;
 
 namespace Business.Concrete
 {
@@ -74,9 +69,10 @@ namespace Business.Concrete
             return new ErrorResult(CarMessages.CarUpdated);
         }
 
-        public IDataResult<List<RentDetailsDto>> GetRentDetailsDto()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<RentDetailsDto>>(_carDal.getRentDetails(),CarMessages.CarsRentDetailsDto);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(),CarMessages.GetCarDetails);
         }
+
     }
 }

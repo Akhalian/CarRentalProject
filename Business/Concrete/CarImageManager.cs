@@ -2,7 +2,7 @@
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation.FluentValidation;
 using Core.Utilities;
-using Core.Utilities.FileOperations;
+using Core.Utilities.Helpers;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -24,7 +24,7 @@ namespace Business.Concrete
             _carImageDal = carImageDal;
         }
 
-        [ValidationAspect(typeof(CarImageValidator))]
+        //[ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile file, CarImage carImage)
         {
             IResult result = BusinessRules.Run(
@@ -36,7 +36,7 @@ namespace Business.Concrete
                 return result;
             }
 
-            carImage.ImagePath = Operation.AddAsync(file);
+            carImage.ImagePath = FileHelper.AddAsync(file);
             carImage.Date = DateTime.Now;
             _carImageDal.Add(carImage);
             return new SuccessResult();
@@ -46,7 +46,7 @@ namespace Business.Concrete
         public IResult Update(IFormFile file, CarImage carImage)
         {
             var oldpath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\wwwroot")) + _carImageDal.Get(p => p.Id == carImage.Id).ImagePath;
-            carImage.ImagePath = Operation.UpdateAsync(oldpath, file);
+            carImage.ImagePath = FileHelper.UpdateAsync(oldpath, file);
             carImage.Date = DateTime.Now;
             _carImageDal.Update(carImage);
             return new SuccessResult();
@@ -59,7 +59,7 @@ namespace Business.Concrete
             var oldpath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\wwwroot")) + _carImageDal.Get(p => p.Id == carImage.Id).ImagePath;
 
             IResult result = BusinessRules.Run(
-                Operation.DeleteAsync(oldpath));
+                FileHelper.DeleteAsync(oldpath));
 
             if (result != null)
             {
