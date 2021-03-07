@@ -7,6 +7,5 @@ namespace DataAccess.Concrete.EntityFramework.Repository
 {
     public class EfBrandDal : EfEntityRepositoryBase<Brand, CarRentalDbContext>, IBrandDal
     {
-
     }
 }

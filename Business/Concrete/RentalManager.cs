@@ -51,7 +51,7 @@ namespace Business.Concrete
 
         public IDataResult<List<RentDetailsDto>> GetRentDetails()
         {
-            return new SuccessDataResult<List<RentDetailsDto>>(_rentalDal.GetRentDetails(), gRentalMessages.GetRentDetails);
+            return new SuccessDataResult<List<RentDetailsDto>>(_rentalDal.GetRentDetails(), RentalMessages.GetRentDetails);
         }
     }
 }

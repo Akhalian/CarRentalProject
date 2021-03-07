@@ -40,6 +40,7 @@ namespace ConsoleUI
             //BrandTest(brandManager);
             //ColorTest(colorManager);
             //UserTest(userManager);
+
         }
 
         private static void UserTest(UserManager userManager)
