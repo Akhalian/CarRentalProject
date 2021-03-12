@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework.Repository
                     {
                         CarId = car.CarId,
                         ImagePath = carImage.ImagePath,
-                        Descriptions = car.Description,
+                        Description = car.Description,
                         BrandName = brand.BrandName,
                         CarImageDate = carImage.Date,
                         ColorName = color.ColorName,

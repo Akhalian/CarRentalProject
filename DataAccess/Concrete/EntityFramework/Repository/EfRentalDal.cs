@@ -19,15 +19,19 @@ namespace DataAccess.Concrete.EntityFramework.Repository
                     join brand in context.Brands on car.BrandId equals brand.BrandId
                     join color in context.Colors on car.ColorId equals color.ColorId
                     join customer in context.Customers on rental.CustomerId equals customer.CustomerId
+                    join user in context.Users on customer.UserId equals user.UserId
                     select new RentDetailsDto()
                     {
+                        RentalId = rental.Id,
                         BrandName = brand.BrandName,
                         ColorName = color.ColorName,
                         DailyPrice = car.DailyPrice,
                         CarName = car.Description,
                         RentDate = rental.RentDate,
                         ReturnDate = rental.ReturnDate,
-                        CustomerName = customer.CustomerName
+                        CustomerName = customer.CustomerName,
+                        UserFirstName = user.FirstName,
+                        UserLastName = user.LastName
                     };
                 return result.ToList();
             }

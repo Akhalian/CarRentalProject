@@ -5,6 +5,7 @@ using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System.Collections.Generic;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -38,6 +39,11 @@ namespace Business.Concrete
         {
             _customerDal.Update(customer);
             return new SuccessResult(CustomerMessages.CustomerUpdated);
+        }
+
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetails()
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(), CustomerMessages.GetCustomerDetails);
         }
     }
 }
