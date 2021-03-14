@@ -84,5 +84,10 @@ namespace DataAccess.Concrete.InMemory
             carToUpdate.Description = car.Description;
             carToUpdate.ModelYear = car.ModelYear;
         }
+
+        public List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

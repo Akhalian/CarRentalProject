@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Business.BusinessAspect.Autofac;
 
 namespace Business.Concrete
 {
@@ -24,7 +25,8 @@ namespace Business.Concrete
             _carImageDal = carImageDal;
         }
 
-        //[ValidationAspect(typeof(CarImageValidator))]
+        [SecuredOperation("car.add,admin")]
+        [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile file, CarImage carImage)
         {
             IResult result = BusinessRules.Run(
@@ -42,6 +44,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Update(IFormFile file, CarImage carImage)
         {
@@ -53,6 +56,7 @@ namespace Business.Concrete
 
         }
 
+        [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Delete(CarImage carImage)
         {

@@ -62,7 +62,7 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
-        [HttpGet("getrentaldetails")]
+        [HttpGet("getdetails")]
         public IActionResult GetRentaldetails()
         {
             var result = _rentalService.GetRentDetails();
