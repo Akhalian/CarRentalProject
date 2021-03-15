@@ -93,5 +93,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(
                 cardetail => cardetail.ModelYear<= min && cardetail.ModelYear>=max));
         }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetail(int carId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(cardetail=> cardetail.CarId==carId));
+        }
     }
 }
