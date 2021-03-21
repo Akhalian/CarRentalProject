@@ -84,16 +84,16 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
         }
 
-        public IDataResult<List<CarImage>> GetImagesByCarId(int id)
+        public IDataResult<List<CarImage>> GetImagesByCarId(int carId)
         {
-            IResult result = BusinessRules.Run(CheckIfCarImageNull(id));
+            //IResult result = BusinessRules.Run(CheckIfCarImageNull(carId));
 
-            if (result != null)
-            {
-                return new ErrorDataResult<List<CarImage>>(result.Message);
-            }
+            //if (result != null)
+            //{
+            //    return new ErrorDataResult<List<CarImage>>(result.Message);
+            //}
 
-            return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(id).Data);
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(i=> i.CarId==carId));
         }
 
         private IDataResult<List<CarImage>> CheckIfCarImageNull(int id)

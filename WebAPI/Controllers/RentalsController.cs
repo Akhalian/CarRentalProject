@@ -62,8 +62,9 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
         [HttpGet("getdetails")]
-        public IActionResult GetRentaldetails()
+        public IActionResult GetRentalDetails()
         {
             var result = _rentalService.GetRentDetails();
             if (result.Success)
@@ -72,6 +73,29 @@ namespace WebAPI.Controllers
             }
 
             return BadRequest(result);
+        }
+
+        [HttpGet("getdetailsbycarid")]
+        public IActionResult GetRentalDetailsByCarId(int carId)
+        {
+            var result = _rentalService.GetRentDetailsByCarId(carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpPost("isrentable")]
+        public IActionResult IsRentable(Rental rental)
+        {
+            var result = _rentalService.IsRentable(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return Ok(result);
         }
     }
 }

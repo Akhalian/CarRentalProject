@@ -19,15 +19,15 @@ namespace DataAccess.Concrete.EntityFramework.Repository
                 var result = from car in context.Cars
                     join color in context.Colors on car.ColorId equals color.ColorId
                     join brand in context.Brands on car.BrandId equals brand.BrandId
-                    join carImage in context.CarImages on car.CarId equals carImage.CarId 
+                    //join carImage in context.CarImages on car.CarId equals carImage.CarId 
                     select new CarDetailDto()
                     {
                         CarId = car.CarId,
-                        ImagePath = carImage.ImagePath,
+                        ImagePath = (from carImage in context.CarImages where carImage.CarId == car.CarId select carImage.ImagePath).FirstOrDefault(),
                         Description = car.Description,
                         BrandId = brand.BrandId,
                         BrandName = brand.BrandName,
-                        CarImageDate = carImage.Date,
+                        CarImageDate = (from carImage in context.CarImages where carImage.CarId == car.CarId select carImage.Date).FirstOrDefault(),
                         ColorId = color.ColorId,
                         ColorName = color.ColorName,
                         DailyPrice = car.DailyPrice,
